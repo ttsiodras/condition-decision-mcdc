@@ -1,0 +1,4 @@
+coverage_demo
+coverage_demo.c.gcov
+coverage_demo.gcda
+coverage_demo.gcno
