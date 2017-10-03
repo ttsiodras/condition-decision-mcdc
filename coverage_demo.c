@@ -4,11 +4,18 @@
 
 int main(int argc, char *argv[])
 {
-    uint32_t t1 = atoi(argv[1]);
-    uint32_t t2 = t1 < 8 && t1 > 2;
-    if (t1 < 7 && t1 > 3)
-        printf("3<%d<7 was true\n", t1);
-    else
-        printf("3<%d<7 was false\n", t1);
+    uint32_t a = atoi(argv[1]);
+    uint32_t b = atoi(argv[2]);
+    uint32_t x = atoi(argv[3]);
+    if (a > 1 && b == 0) { 
+        puts("Decision 1 was true");
+    } else {
+        puts("Decision 1 was false");
+    } 
+    if (a == 2 || x > 1) { 
+        puts("Decision 2 was true");
+    } else {
+        puts("Decision 2 was false");
+    } 
     return 0;
 }
