@@ -52,7 +52,7 @@ Now, if we want to get 100% condition coverage, every condition in a decision
 in the program must take all possible outcomes at least once. In the code we
 have 4 conditions `a > 1`, `b == 0`, `a == 2`, `x > 1`. We need test cases that make
 all 4 of the conditions true and false. The previous test cases don’t suffice
-because the condition `b == 0` is never evaluated to false. That could mean a
+because e.g. the condition `b == 0` is never evaluated to false. That could mean a
 untested critical scenario that could have a bug. To satisfy condition coverage
 we could have the following test cases:
 
