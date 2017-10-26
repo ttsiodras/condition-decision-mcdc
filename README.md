@@ -26,6 +26,7 @@ could have the following test cases:
     ./coverage_demo 3 0 2
     Decision 1 was true
     Decision 2 was true
+
     ./coverage_demo 1 0 1
     Decision 1 was false
     Decision 2 was false
