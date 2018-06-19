@@ -118,8 +118,8 @@ The gcov output indicates this, in that...
 
 (b) ...and the branch coverage is also not 100%, since the FINAL branch
 in the object code (the one that says *"we've evaluated to true,
-let's execute the action of the `if`"*) is also not executed (see above,
-branch 2 is taken 0 times).
+let's execute the `then` action of the `if`"*) is also not executed
+(see above, branch 2 is taken 0 times).
 
 Since both types of coverage are important and one does not guarantee
 satisfying the other, in practice they are typically combined, and that is
@@ -140,6 +140,15 @@ the following test cases:
 
 Now, notice that although these cases would provide both levels of coverage
 some conditions are being masked and therefore never evaluated.
+
+```c
+        2:   10:    if (a > 1 && b == 0) { 
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   11:        puts("Decision 1 was true");
+```
 
 gcov indicates this, since there are branches that are still, never executed.
 
