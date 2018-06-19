@@ -1,3 +1,23 @@
+
+Read the following, keeping these in mind:
+
+- Statement is a complete line of code
+- Conditions and decisions: inside...
+
+```c
+    if (a > 1 && b == 0) { 
+```
+
+...the `a > 1` part is a condition - i.e. a part of a decision 
+(which in this case is comprised of two conditions).
+
+- Branch (at least in terms of the discussion that follows - i.e. in terms
+  of what GCOV describes as a branch) is a condition being checked at object
+  code level. A branch therefore exists at any instruction like `ble` (branch
+  if less or equal, etc)
+
+Given the context above...
+
 To get 100% decision coverage every decision in the program must take all
 possible outcomes at least once. Given that in the code we have two decisions...
 
@@ -34,11 +54,12 @@ could have the following test cases:
     
 Both decisions are exercised to be both true and false.
 
-But notice in the gcov annotated output that all stmts are executed (there are no `####`
-reported in any source line in the gcov output, we have 100% statement coverage).
-But there ARE branches that were never executed (because these conditions
-were never exercised - e.g. `b` was always 0! Look at the last branch counter,
-i.e. branch 3 of line 10:
+But notice in the gcov annotated output that all stmts are executed (there are
+no `####` reported in any source line in the gcov output, we have 100%
+statement coverage).  But there ARE branches (i.e. object-code-level
+conditions) that were never executed (because these conditions were never
+exercised - e.g. `b` was always 0! Look at the last branch counter, i.e. branch
+3 of line 10:
 
 ```c
         2:   10:    if (a > 1 && b == 0) {
