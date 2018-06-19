@@ -150,12 +150,12 @@ branch  3 taken 0
         1:   11:        puts("Decision 1 was true");
 ```
 
-gcov indicates this, since there are branches that are still, never executed.
-
-For example, `a = 1` masks the condition `b == 0` in the decision `(a > 1 && b == 0)`
-because it makes the condition `a > 1` false and therefore the executable
-doesn't need to evaluate the other condition to determine the outcome of the
-AND expression. These are the 'short-circuit' semantics of the C language.
+gcov indicates this, since there are branches that are still, never executed
+(branch 3). For example, `a = 1` masks the condition `b == 0` in the decision
+`(a > 1 && b == 0)` because it makes the condition `a > 1` false and therefore
+the executable doesn't need to evaluate the other condition (`b == 0`) to
+determine the outcome of the AND expression. These are the 'short-circuit'
+semantics of the C language.
 
 Hence, we need to modify the test cases to ensure the coverage of masking
 conditions, and that's called modified condition decision coverage (MCDC):
@@ -181,5 +181,8 @@ as executed by gcov:
     branch  1 taken 1
     branch  2 taken 1 (fallthrough)
     branch  3 taken 1
+
+Put plainly, there are no "0" counters in any lines or branches; i.e. 100%
+statement and branch coverage.
 
 *The content above is based on [a nice (but slightly buggy) Quora article](https://www.quora.com/What-is-the-difference-between-decision-coverage-and-condition-coverage-when-it-comes-to-code-coverage).*
