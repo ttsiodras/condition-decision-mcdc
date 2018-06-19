@@ -70,13 +70,18 @@ exercised - e.g. `b` was always 0! Look at the last branch counter, i.e. branch
         1:   11:        puts("Decision 1 was true");
 ```
 
+That is, the object code generated to represent the checking of condition `b==0`
+NEVER evaluated the condition as false. This means we don't have 100% condition
+coverage.
+
 Now, if we want to get 100% condition coverage, every condition in a decision
 in the program must take all possible outcomes at least once. In the code we
 have 4 conditions `a > 1`, `b == 0`, `a == 2`, `x > 1`. We need test cases that make
 all 4 of the conditions true and false. The previous test cases don’t suffice
-because e.g. the condition `b == 0` is never evaluated to false. That could mean a
-untested critical scenario that could have a bug. To satisfy condition coverage
-we could have the following test cases:
+because e.g. the condition `b == 0` is never evaluated to false. That could mean
+an untested critical scenario that could have a bug. 
+
+To achieve 100% condition coverage we could have the following test cases:
 
     a = 1, b = 0, x = 2 → a > 1(F), b == 0(T), a == 2(F), x > 1(T)
     a = 2, b = 1, x = 1 → a > 1(T), b == 0(F), a == 2(T), x > 1(F)
@@ -92,6 +97,8 @@ we could have the following test cases:
 
 Now each condition has been both true and false, but overall, decision 1
 was NEVER true - because its two conditions were once FT, and once TF.
+Since the decision is formed from a logical AND (`&&`) of the two conditions,
+it was never evaluated as true.
 
 The gcov output indicates this, in that...
 
@@ -109,9 +116,9 @@ The gcov output indicates this, in that...
         2:   13:        puts("Decision 1 was false");
 ```
 
-(b) ...and the branch coverage is also not 100%, since the FINAL
-branch (the one that says in the object code, we've evaluated to true,
-let's execute the action of the `if`) is also not executed (see above,
+(b) ...and the branch coverage is also not 100%, since the FINAL branch
+in the object code (the one that says *"we've evaluated to true,
+let's execute the action of the `if`"*) is also not executed (see above,
 branch 2 is taken 0 times).
 
 Since both types of coverage are important and one does not guarantee
