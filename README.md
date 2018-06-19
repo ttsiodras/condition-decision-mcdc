@@ -183,6 +183,9 @@ as executed by gcov:
     branch  3 taken 1
 
 Put plainly, there are no "0" counters in any lines or branches; i.e. 100%
-statement and branch coverage.
+statement and branch coverage; and in my understanding, this is equivalent to
+100% MC/DC coverage.
+
+If you see a logical error here, please open a ticket in this repository.
 
 *The content above is based on [a nice (but slightly buggy) Quora article](https://www.quora.com/What-is-the-difference-between-decision-coverage-and-condition-coverage-when-it-comes-to-code-coverage).*
