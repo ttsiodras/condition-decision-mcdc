@@ -1,20 +1,22 @@
 
-Read the following, keeping these in mind:
+Read the following, keeping in mind that in terms of this discussion...
 
-- Statement is a complete line of code
-- Conditions and decisions: inside...
+- Any program is basically a series of *statements*; instructing the
+  code to perform any [of a list of actions](https://msdn.microsoft.com/en-us/library/015az3wz.aspx).
+
+- As for conditions and decisions, inside this `if`'s expression...
 
 ```c
     if (a > 1 && b == 0) { 
 ```
 
-...the `a > 1` part is a condition - i.e. a part of a decision 
+...the `a > 1` part is a *condition* - i.e. a part of the if's *decision*
 (which in this case is comprised of two conditions).
 
-- Branch (at least in terms of the discussion that follows - i.e. in terms
+- Finally, *branch* (at least in terms of the discussion that follows - i.e. in terms
   of what GCOV describes as a branch) is a condition being checked at object
   code level. A branch therefore exists at any instruction like `ble` (branch
-  if less or equal, etc)
+  if less or equal on SPARCs) or `jnz` (jump if not zero on x86) etc.
 
 Given the context above...
 
